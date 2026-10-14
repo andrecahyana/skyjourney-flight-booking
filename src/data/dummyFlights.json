@@ -1,11 +1,40 @@
-[
+const flights = [
   {
-    "id": "fj-001",
-    "airline": "Garuda Indonesia",
-    "from": "CGK",
-    "to": "DPS",
-    "depart": "2026-11-27T08:00:00",
-    "arrive": "2026-11-27T10:15:00",
-    "price": 1450000
+    id: 1,
+    airline: 'Garuda Indonesia',
+    from: 'CGK',
+    to: 'DPS',
+    departure: '08:00',
+    arrival: '10:15',
+    price: 1450000,
+    duration: '2h 15m',
+    seats: 7,
+    badge: 'Best value',
+  },
+  {
+    id: 2,
+    airline: 'Citilink',
+    from: 'CGK',
+    to: 'DPS',
+    departure: '10:40',
+    arrival: '12:55',
+    price: 1320000,
+    duration: '2h 15m',
+    seats: 3,
+    badge: 'Promo',
+  },
+  {
+    id: 3,
+    airline: 'Batik Air',
+    from: 'CGK',
+    to: 'DPS',
+    departure: '13:20',
+    arrival: '15:35',
+    price: 1580000,
+    duration: '2h 15m',
+    seats: 12,
+    badge: 'New',
   }
 ]
+
+export default flights
