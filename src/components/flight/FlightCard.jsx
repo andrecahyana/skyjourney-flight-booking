@@ -1,6 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import formatCurrency from '../../utils/formatCurrency'
 
 export default function FlightCard({ flight }) {
+  const navigate = useNavigate()
+
+  function handleSelect(){
+    // navigate to passenger page and pass selected flight in location state
+    navigate('/passenger', { state: { flight } })
+  }
+
   return (
     <article className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -23,7 +31,7 @@ export default function FlightCard({ flight }) {
         <div className="flex items-center gap-5">
           <div className="text-center">
             <p className="text-xl font-black text-slate-900">{flight.departure}</p>
-            <p className="text-sm text-slate-500">{flight.route.split(' → ')[0]}</p>
+            <p className="text-sm text-slate-500">{flight.route ? flight.route.split(' → ')[0] : flight.from}</p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="h-px w-12 bg-slate-300" />
@@ -31,7 +39,7 @@ export default function FlightCard({ flight }) {
           </div>
           <div className="text-center">
             <p className="text-xl font-black text-slate-900">{flight.arrival}</p>
-            <p className="text-sm text-slate-500">{flight.route.split(' → ')[1]}</p>
+            <p className="text-sm text-slate-500">{flight.route ? flight.route.split(' → ')[1] : flight.to}</p>
           </div>
         </div>
 
@@ -40,7 +48,7 @@ export default function FlightCard({ flight }) {
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">from</p>
             <p className="text-2xl font-black text-slate-900">{formatCurrency(flight.price)}</p>
           </div>
-          <button className="rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow hover:bg-sky-700">
+          <button onClick={handleSelect} className="rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow hover:bg-sky-700">
             Select
           </button>
         </div>
