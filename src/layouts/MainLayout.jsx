@@ -1,4 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutUser } from '../store/authSlice'
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -7,6 +9,13 @@ const navItems = [
 ]
 
 export default function MainLayout({ children }) {
+  const user = useSelector((s)=>s.auth.user)
+  const dispatch = useDispatch()
+
+  async function handleLogout(){
+    await dispatch(logoutUser())
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
       <header className="border-b border-slate-200 bg-white/90 backdrop-blur-sm sticky top-0 z-20">
@@ -38,12 +47,19 @@ export default function MainLayout({ children }) {
           </nav>
 
           <div className="flex items-center gap-3">
-            <button className="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 md:inline-flex">
-              Log in
-            </button>
-            <button className="rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-sky-700">
-              Book now
-            </button>
+            {user ? (
+              <>
+                <div className="hidden items-center gap-3 md:flex">
+                  <div className="text-sm text-slate-700">{user.displayName || user.email}</div>
+                  <button onClick={handleLogout} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700">Logout</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 md:inline-flex">Log in</Link>
+                <Link to="/register" className="rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-sky-700">Sign up</Link>
+              </>
+            )}
           </div>
         </div>
       </header>
