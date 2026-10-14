@@ -1,0 +1,12 @@
+[
+  { "code": "CGK", "city": "Jakarta", "name": "Soekarno–Hatta International Airport" },
+  { "code": "DPS", "city": "Bali", "name": "Ngurah Rai International Airport" },
+  { "code": "SUB", "city": "Surabaya", "name": "Juanda International Airport" },
+  { "code": "JOG", "city": "Yogyakarta", "name": "Yogyakarta International Airport" },
+  { "code": "LOP", "city": "Lombok", "name": "Lombok International Airport" },
+  { "code": "KNO", "city": "Medan", "name": "Kualanamu International Airport" },
+  { "code": "BDO", "city": "Bandung", "name": "Husein Sastranegara International Airport" },
+  { "code": "SIN", "city": "Singapore", "name": "Changi Airport" },
+  { "code": "KUL", "city": "Kuala Lumpur", "name": "Kuala Lumpur International Airport" },
+  { "code": "MLG", "city": "Malang", "name": "Abdul Rachman Saleh Airport" }
+]
