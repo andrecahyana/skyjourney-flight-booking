@@ -1,4 +1,3 @@
-import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import Home from '../pages/Home'
@@ -9,12 +8,14 @@ import SuccessPage from '../pages/SuccessPage'
 import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
 import PrivateRoute from '../components/auth/PrivateRoute'
+import FlightDetailPage from '../pages/FlightDetailPage'
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout><Home /></MainLayout>} />
       <Route path="/search" element={<MainLayout><SearchResult /></MainLayout>} />
+      <Route path="/flight/:id" element={<MainLayout><FlightDetailPage /></MainLayout>} />
 
       <Route path="/passenger" element={<PrivateRoute><MainLayout><PassengerPage /></MainLayout></PrivateRoute>} />
       <Route path="/payment" element={<PrivateRoute><MainLayout><PaymentPage /></MainLayout></PrivateRoute>} />

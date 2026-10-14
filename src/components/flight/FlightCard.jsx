@@ -4,9 +4,12 @@ import formatCurrency from '../../utils/formatCurrency'
 export default function FlightCard({ flight }) {
   const navigate = useNavigate()
 
-  function handleSelect(){
-    // navigate to passenger page and pass selected flight in location state
+  function handleSelect() {
     navigate('/passenger', { state: { flight } })
+  }
+
+  function handleDetail() {
+    navigate(`/flight/${flight.id}`, { state: { flight } })
   }
 
   return (
@@ -24,7 +27,7 @@ export default function FlightCard({ flight }) {
                 {flight.badge}
               </span>
             </div>
-            <p className="mt-1 text-sm text-slate-500">{flight.duration} • {flight.seats} seats left</p>
+            <p className="mt-1 text-sm text-slate-500">{flight.duration} • {flight.seats} seats left • {flight.stops ?? 0} stop(s)</p>
           </div>
         </div>
 
@@ -35,7 +38,7 @@ export default function FlightCard({ flight }) {
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="h-px w-12 bg-slate-300" />
-            <span className="text-[10px] uppercase tracking-[0.25em] text-slate-400">direct</span>
+            <span className="text-[10px] uppercase tracking-[0.25em] text-slate-400">{flight.stops === 0 ? 'direct' : 'connecting'}</span>
           </div>
           <div className="text-center">
             <p className="text-xl font-black text-slate-900">{flight.arrival}</p>
@@ -43,14 +46,20 @@ export default function FlightCard({ flight }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="text-right">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">from</p>
             <p className="text-2xl font-black text-slate-900">{formatCurrency(flight.price)}</p>
           </div>
-          <button onClick={handleSelect} className="rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow hover:bg-sky-700">
-            Select
-          </button>
+
+          <div className="flex flex-col gap-2">
+            <button onClick={handleDetail} className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold text-sky-700 hover:bg-sky-100">
+              View details
+            </button>
+            <button onClick={handleSelect} className="rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-sky-700">
+              Select
+            </button>
+          </div>
         </div>
       </div>
     </article>
