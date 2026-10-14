@@ -1,0 +1,11 @@
+[
+  {
+    "id": "fj-001",
+    "airline": "Garuda Indonesia",
+    "from": "CGK",
+    "to": "DPS",
+    "depart": "2026-11-27T08:00:00",
+    "arrive": "2026-11-27T10:15:00",
+    "price": 1450000
+  }
+]
